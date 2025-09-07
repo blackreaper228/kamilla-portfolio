@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap&text=%E2%86%97");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+/* Newsreader Normal */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../fonts/Newsreader-VariableFont_opsz,wght.woff2") format("woff2");
+}
+
+/* Newsreader Italic */
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../fonts/Newsreader-Italic-VariableFont_opsz,wght.woff2")
+    format("woff2");
+}

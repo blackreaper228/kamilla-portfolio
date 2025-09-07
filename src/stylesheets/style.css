@@ -1,0 +1,125 @@
+body {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 100px;
+  position: relative;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  z-index: 100;
+  padding: 0 90px;
+  overflow: hidden; /* важно для псевдоэлемента */
+  box-sizing: border-box;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100%;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--black);
+
+    &:hover {
+      /* color: var(--white);
+      background-color: var(--black); */
+      /* padding: 10px 20px; */
+
+      padding-top: 14px;
+      font-family: "Newsreader", sans-serif;
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 900;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+  }
+  .contact {
+    a {
+      background-color: var(--black);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:hover {
+        background-color: var(--white);
+        color: var(--black);
+
+        font-family: "Newsreader", sans-serif;
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 800;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .arrowLink {
+    margin-top: -8px;
+  }
+}
+
+.leftNav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.midNav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 976px;
+}
+
+.heroText {
+  h1:first-child {
+    margin-left: 70px;
+  }
+  h1:last-child {
+    margin-top: -70px;
+    margin-left: 616px;
+  }
+}
+
+.kamilla {
+  position: absolute;
+  top: 302px;
+  left: -18px;
+  width: 598px;
+  z-index: 1;
+}
+
+.and {
+  position: absolute;
+  top: 286 px;
+  left: 346px;
+  width: 298px;
+}

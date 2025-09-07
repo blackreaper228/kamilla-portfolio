@@ -1,0 +1,10 @@
+h1 {
+  color: var(--black);
+  font-family: "Inter", sans-serif;
+  font-size: 246px;
+  font-style: normal;
+  font-weight: 650;
+  line-height: normal;
+  letter-spacing: -7.36px;
+  text-transform: uppercase;
+}
