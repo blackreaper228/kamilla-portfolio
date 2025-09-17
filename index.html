@@ -25,6 +25,7 @@
   </head>
   <body>
     <script type="module" src="/src/javascript/main.js"></script>
+    <div class="cursor outer"></div>
     <nav>
       <ul>
         <div class="navContainer">
@@ -45,15 +46,56 @@
         </li>
       </ul>
     </nav>
-    <img
-      class="kamilla"
-      src="/images/landing/kamilla.png"
-      alt="Kamilla photo"
-    />
-    <img class="and" src="./src/images/svg/and.svg" alt="And symbol" />
-    <div class="heroText">
-      <h1>photographer</h1>
-      <h1>videographer</h1>
-    </div>
+    <section class="firstScreen">
+      <div class="kamilla"></div>
+      <img class="and" src="./src/images/svg/and.svg" alt="And symbol" />
+      <div class="heroText">
+        <h1>photographer</h1>
+        <div class="titleWrap">
+          <h1>videographer</h1>
+        </div>
+      </div>
+      <div class="description">
+        <ul class="menu">
+          <li><a href="#">fashion</a></li>
+          <li><a href="#">personal</a></li>
+          <li><a href="#">e-commerce</a></li>
+          <li><a href="#">reportage</a></li>
+          <li><a href="#">food</a></li>
+        </ul>
+        <div class="infoWrap">
+          <div class="infoRow">
+            <p>Kamilla</p>
+            <p>based in dubai</p>
+            <ul class="topRowList">
+              <p>5 years of experience</p>
+              <p>450+ fashion shoots</p>
+              <p>100+ events</p>
+            </ul>
+          </div>
+          <div class="infoRow">
+            <p>scroll down ↓</p>
+            <p>©2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="secondScreen">
+      <div class="carousel">
+        <div class="carouselLine">
+          <img class="carouselImg" src="/images/carousel/img1.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img2.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img3.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img4.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img5.jpg" alt="" />
+          <!-- Дублируем изображения для бесконечного эффекта -->
+          <img class="carouselImg" src="/images/carousel/img1.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img2.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img3.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img4.jpg" alt="" />
+          <img class="carouselImg" src="/images/carousel/img5.jpg" alt="" />
+        </div>
+      </div>
+    </section>
   </body>
 </html>
