@@ -39,6 +39,7 @@ body {
 }
 
 nav.navBG {
+  pointer-events: none;
   mix-blend-mode: normal;
   .leftNav
     > *:not(
@@ -50,13 +51,13 @@ nav.navBG {
     opacity: 0 !important;
   }
 
-  /* .midNav {
+  .midNav {
     opacity: 0;
   }
 
   .contact {
     opacity: 0;
-  } */
+  }
 }
 
 nav {
@@ -333,7 +334,7 @@ nav {
 
   ul {
     top: 39px;
-    background-color: red;
+    background-color: var(--white);
     position: absolute;
     z-index: 1000;
     display: flex;
@@ -344,6 +345,10 @@ nav {
     width: 342px;
     padding: 10px 26px;
     margin-left: -26px;
+
+    a {
+      color: var(--black);
+    }
   }
 
   li {
