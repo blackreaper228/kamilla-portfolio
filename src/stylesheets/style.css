@@ -39,7 +39,9 @@ body {
 }
 
 nav.navBG {
-  *:not(
+  mix-blend-mode: normal;
+  .leftNav
+    > *:not(
       .dropDownPhotos,
       .dropDownPhotos > ul,
       .dropDownPhotos > ul > li,
@@ -47,10 +49,19 @@ nav.navBG {
     ) {
     opacity: 0 !important;
   }
+
+  /* .midNav {
+    opacity: 0;
+  }
+
+  .contact {
+    opacity: 0;
+  } */
 }
 
 nav {
   mix-blend-mode: difference;
+  isolation: auto;
 
   position: fixed;
   top: 0;
