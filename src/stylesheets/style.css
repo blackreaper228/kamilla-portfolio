@@ -9,6 +9,8 @@ body {
   box-sizing: border-box;
   padding-top: 100px;
   position: relative;
+  overflow-x: hidden;
+  /* transform-style: preserve-3d; */
 }
 
 .cursor {
@@ -46,11 +48,12 @@ nav {
   height: 96px;
   z-index: 100;
   padding: 0 3.516vw;
-  overflow: hidden; /* важно для псевдоэлемента */
   box-sizing: border-box;
   mix-blend-mode: difference;
 
   ul {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,64 +62,54 @@ nav {
 
     font-family: "Inter", sans-serif;
 
-    font-size: 24px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
   }
 
-  a {
+  a,
+  p {
+    position: relative;
     text-decoration: none;
-    /* color: var(--white); */
-    color: white;
+    color: var(--white);
 
     &:hover {
-      /* color: var(--white);
-      background-color: var(--black); */
-      /* padding: 10px 20px; */
-
-      padding-top: 14px;
       font-family: "Newsreader", sans-serif;
-      font-size: 24px;
+      font-size: 0.938vw;
       font-style: italic;
-      font-weight: 900;
+      font-weight: 800;
       line-height: normal;
       text-transform: uppercase;
-    }
-  }
 
-  .contact {
-    a {
-      background-color: var(--black);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      &:hover {
-        background-color: var(--white);
-        color: var(--black);
-
-        font-family: "Newsreader", sans-serif;
-        font-size: 24px;
-        font-style: italic;
-        font-weight: 800;
-        line-height: normal;
-        text-transform: uppercase;
+      .arrowLink {
+        top: -0.4vw;
+        right: -1.1vw;
       }
     }
   }
+}
 
-  .arrowLink {
-    margin-top: -8px;
-  }
+.arrowLink {
+  position: absolute;
+  top: -0.117vw;
+  right: -1.1vw;
 }
 
 .leftNav {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 1.406vw;
+  position: relative;
+
+  & > :first-child {
+    min-width: 5.625vw;
+  }
+
+  & > :nth-child(2) {
+    min-width: 4.063vw;
+  }
 }
 
 .midNav {
@@ -130,7 +123,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 976px;
+  max-width: 33.5vw;
 }
 
 .heroText {
@@ -169,13 +162,17 @@ nav {
 
 /* .trail-container */
 .firstScreen {
-  height: 85svh;
+  height: 40.625vw;
+  /* height: 85svh; */
   overflow: hidden;
 }
 
 .secondScreen {
-  height: 100svh;
+  /* height: 100svh; */
   overflow: hidden;
+  /* margin-top: 42svh; */
+  /* margin-top: 20vw; */
+  margin-bottom: 4vw;
 }
 
 /* cursor trail */
@@ -219,10 +216,6 @@ nav {
       calc(calc(calc(26.563vw * 5) + calc(0.781vw * 4.5)) * -1)
     ); /* Сдвиг на половину + половина gaps */
   }
-}
-
-/* Замедление анимации при наведении */
-.carousel:hover .carouselLine {
 }
 
 .description {
@@ -269,5 +262,63 @@ nav {
       font-weight: 800;
       font-style: italic;
     }
+  }
+}
+
+.bigImgWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+  transform-style: preserve-3d;
+  position: relative;
+  height: 150vh;
+  transform: translateZ(-50px);
+}
+
+.bigImg {
+  width: 50vw;
+  height: 90svh;
+  background-image: url("/images/3D/img1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.thirdScreen {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 110vh;
+}
+
+.fourthScreen {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 200vh;
+  background-color: var(--black);
+}
+
+.dropDownPhotos {
+  position: relative;
+  isolation: isolate !important;
+  mix-blend-mode: normal !important;
+
+  ul {
+    mix-blend-mode: normal !important;
+    isolation: isolate !important;
+    background-color: red;
+    background-blend-mode: normal !important;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    height: auto;
   }
 }
