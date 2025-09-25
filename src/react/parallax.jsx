@@ -18,6 +18,7 @@ const ParallaxSection = () => {
     connor: false,
     newL: false,
     newR: false,
+    textBlock: false,
   });
 
   // Функции для конвертации viewport единиц
@@ -85,6 +86,62 @@ const ParallaxSection = () => {
     transform: `translateY(${scrollY * vw(-175) + vw(+160)}px) translateX(${vw(
       24
     )}px) scale(${hoveredElements.newR ? 1.1 : 1})`,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockFashion = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      0
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockCommercial = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      20
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockEvents = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      -20
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockMagazine = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      -25
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockReportage = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      25
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockPersonal = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      30
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
+    config: ANIMATION_CONFIG,
+  });
+
+  const textBlockInterior = useSpring({
+    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+      -30
+    )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
+    opacity: scrollY > 0.3 ? 1 : 0,
     config: ANIMATION_CONFIG,
   });
 
@@ -194,6 +251,56 @@ const ParallaxSection = () => {
           cursor: "pointer",
         }}
       />
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockFashion,
+          position: "absolute",
+          zIndex: 4,
+          cursor: "pointer",
+          padding: "0 0.8vw",
+          backgroundColor: "var(--white)",
+        }}
+      >
+        <h3
+          style={{
+            fontFamily: '"Newsreader", sans-serif',
+            fontSize: "3.555vw",
+            color: "#000",
+            fontWeight: "500",
+            lineHeight: "1.2",
+          }}
+        >
+          fashion
+        </h3>
+      </animated.div>
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockCommercial,
+          position: "absolute",
+          zIndex: 4,
+          cursor: "pointer",
+          padding: "0 0.8vw",
+          backgroundColor: "var(--white)",
+        }}
+      >
+        <h3
+          style={{
+            fontFamily: '"Newsreader", sans-serif',
+            fontSize: "3.555vw",
+            color: "#000",
+            fontWeight: "500",
+            lineHeight: "1.2",
+          }}
+        >
+          commercial
+        </h3>
+      </animated.div>
     </div>
   );
 };
