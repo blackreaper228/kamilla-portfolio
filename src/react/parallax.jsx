@@ -4,20 +4,43 @@ import { useSpring, animated } from "@react-spring/web";
 const ParallaxSection = () => {
   const [scrollY, setScrollY] = useState(0);
 
-  // 🎛️ Единые настройки анимации - регулируйте здесь!
+  // Контролы анимаций ховера
   const ANIMATION_CONFIG = {
     tension: 300,
     friction: 30,
   };
 
-  // Hover состояния для каждого изображения
+  // Контролы стилей текстов в параллаксе
+  const STYLES = {
+    textBlock: {
+      position: "absolute",
+      zIndex: 4,
+      cursor: "pointer",
+      padding: "0 0.8vw",
+      backgroundColor: "var(--white)",
+    },
+    heading: {
+      fontFamily: '"Newsreader", sans-serif',
+      fontSize: "3.555vw",
+      color: "#000",
+      fontWeight: "500",
+      lineHeight: "1.2",
+    },
+  };
+
+  // Изначальный ховер у объектов
   const [hoveredElements, setHoveredElements] = useState({
-    bg: false,
-    left: false,
-    right: false,
-    connor: false,
-    newL: false,
-    newR: false,
+    px_pic01: false,
+    px_pic02: false,
+    px_pic03: false,
+    px_pic04: false,
+    px_pic07: false,
+    px_pic06: false,
+    px_pic05: false,
+    px_pic08: false,
+    px_pic09: false,
+    px_pic10: false,
+    px_pic11: false,
     textBlock: false,
   });
 
@@ -46,102 +69,139 @@ const ParallaxSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const bg = useSpring({
-    transform: `translateY(${scrollY * vw(-40) + vw(10)}px) scale(${
-      hoveredElements.bg ? 1 : 1
-    })`,
+  // Контролы анимаций пикч
+
+  const px_pic01 = useSpring({
+    transform: `translateY(${scrollY * vw(-40) + vw(10)}px) translateX(${vw(
+      1.2
+    )}px) scale(${hoveredElements.px_pic01 ? 1 : 1})`,
     config: ANIMATION_CONFIG,
   });
 
-  // Объединяем scroll и hover анимации
-  const leftImageSpring = useSpring({
+  const px_pic02 = useSpring({
     transform: `translateY(${scrollY * vw(-200) + vw(+90)}px) translateX(${-vw(
-      26.042
-    )}px) scale(${hoveredElements.left ? 1.15 : 1})`,
+      24
+    )}px) scale(${hoveredElements.px_pic02 ? 1.15 : 1})`,
     config: ANIMATION_CONFIG,
   });
 
-  const rightImageSpring = useSpring({
+  const px_pic03 = useSpring({
     transform: `translateY(${scrollY * vw(-380) + vw(+195)}px) translateX(${vw(
       26.042
-    )}px) scale(${hoveredElements.right ? 1.2 : 1})`,
+    )}px) scale(${hoveredElements.px_pic03 ? 1.2 : 1})`,
     config: ANIMATION_CONFIG,
   });
 
-  const connor = useSpring({
+  const px_pic04 = useSpring({
     transform: `translateY(${scrollY * vw(-125) + vw(+120)}px) translateX(${vw(
-      -18
-    )}px) scale(${hoveredElements.connor ? 1 : 1})`,
+      -21.2
+    )}px) scale(${hoveredElements.px_pic04 ? 1 : 1})`,
     config: ANIMATION_CONFIG,
   });
 
-  const newL = useSpring({
+  const px_pic05 = useSpring({
+    transform: `translateY(${scrollY * vw(-220) + vw(+190)}px) translateX(${vw(
+      18.5
+    )}px) scale(${hoveredElements.px_pic05 ? 1.1 : 1})`,
+    config: ANIMATION_CONFIG,
+  });
+
+  const px_pic06 = useSpring({
+    transform: `translateY(${scrollY * vw(-270) + vw(+225)}px) translateX(${vw(
+      39.7
+    )}px) scale(${hoveredElements.px_pic06 ? 1.1 : 1})`,
+    config: ANIMATION_CONFIG,
+  });
+
+  const px_pic07 = useSpring({
     transform: `translateY(${scrollY * vw(-225) + vw(+240)}px) translateX(${-vw(
       26.042
-    )}px) scale(${hoveredElements.newL ? 1.25 : 1})`,
+    )}px) scale(${hoveredElements.px_pic07 ? 1.25 : 1})`,
     config: ANIMATION_CONFIG,
   });
 
-  const newR = useSpring({
-    transform: `translateY(${scrollY * vw(-175) + vw(+160)}px) translateX(${vw(
+  const px_pic08 = useSpring({
+    transform: `translateY(${scrollY * vw(-400) + vw(+355)}px) translateX(${vw(
+      26.3
+    )}px) scale(${hoveredElements.px_pic08 ? 1.1 : 1})`,
+    config: ANIMATION_CONFIG,
+  });
+
+  const px_pic09 = useSpring({
+    transform: `translateY(${scrollY * vw(-500) + vw(+450)}px) translateX(${vw(
+      -18
+    )}px) scale(${hoveredElements.px_pic09 ? 1.1 : 1})`,
+    config: ANIMATION_CONFIG,
+  });
+
+  const px_pic10 = useSpring({
+    transform: `translateY(${scrollY * vw(-545) + vw(+500)}px) translateX(${vw(
       24
-    )}px) scale(${hoveredElements.newR ? 1.1 : 1})`,
+    )}px) scale(${hoveredElements.px_pic10 ? 1.1 : 1})`,
     config: ANIMATION_CONFIG,
   });
 
+  const px_pic11 = useSpring({
+    transform: `translateY(${scrollY * vw(-620) + vw(+590)}px) translateX(${vw(
+      5
+    )}px) scale(${hoveredElements.px_pic11 ? 1.1 : 1})`,
+    config: ANIMATION_CONFIG,
+  });
+
+  // Текстовые блоки
   const textBlockFashion = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
-      0
+    transform: `translateY(${scrollY * vw(-160) + vw(+75)}px) translateX(${vw(
+      26
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
   const textBlockCommercial = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
-      20
+    transform: `translateY(${scrollY * vw(-550) + vw(+510)}px) translateX(${vw(
+      -35
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
   const textBlockEvents = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
-      -20
+    transform: `translateY(${scrollY * vw(-225) + vw(+180)}px) translateX(${vw(
+      4
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
   const textBlockMagazine = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
-      -25
+    transform: `translateY(${scrollY * vw(-260) + vw(+243)}px) translateX(${vw(
+      32
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
   const textBlockReportage = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
-      25
+    transform: `translateY(${scrollY * vw(-300) + vw(+300)}px) translateX(${vw(
+      -15
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
   const textBlockPersonal = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
+    transform: `translateY(${scrollY * vw(-600) + vw(+555)}px) translateX(${vw(
       30
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
   const textBlockInterior = useSpring({
-    transform: `translateY(${scrollY * vw(-300) + vw(+280)}px) translateX(${vw(
-      -30
+    transform: `translateY(${scrollY * vw(-650) + vw(+620)}px) translateX(${vw(
+      20
     )}px) scale(${hoveredElements.textBlock ? 1.05 : 1})`,
-    opacity: scrollY > 0.3 ? 1 : 0,
+
     config: ANIMATION_CONFIG,
   });
 
@@ -164,12 +224,12 @@ const ParallaxSection = () => {
       }}
     >
       <animated.img
-        src="/images/3D/img1.jpg"
+        src="/images/parallax/pic_01.jpg"
         alt="Parallax layer 2"
-        onMouseEnter={() => handleHover("bg", true)}
-        onMouseLeave={() => handleHover("bg", false)}
+        onMouseEnter={() => handleHover("px_pic01", true)}
+        onMouseLeave={() => handleHover("px_pic01", false)}
         style={{
-          ...bg,
+          ...px_pic01,
           position: "absolute",
           width: "50vw",
           objectFit: "cover",
@@ -178,14 +238,14 @@ const ParallaxSection = () => {
       />
 
       <animated.img
-        src="/images/3D/img8.jpg"
+        src="/images/parallax/pic_02.jpg"
         alt="Parallax layer 2"
-        onMouseEnter={() => handleHover("left", true)}
-        onMouseLeave={() => handleHover("left", false)}
+        onMouseEnter={() => handleHover("px_pic02", true)}
+        onMouseLeave={() => handleHover("px_pic02", false)}
         style={{
-          ...leftImageSpring,
+          ...px_pic02,
           position: "absolute",
-          width: "9.766vw",
+          width: "13.021vw",
           objectFit: "cover",
           zIndex: 2,
           cursor: "pointer",
@@ -193,12 +253,12 @@ const ParallaxSection = () => {
       />
 
       <animated.img
-        src="/images/3D/img4.jpg"
+        src="/images/parallax/pic_03.jpg"
         alt="Parallax layer 3"
-        onMouseEnter={() => handleHover("right", true)}
-        onMouseLeave={() => handleHover("right", false)}
+        onMouseEnter={() => handleHover("px_pic03", true)}
+        onMouseLeave={() => handleHover("px_pic03", false)}
         style={{
-          ...rightImageSpring,
+          ...px_pic03,
           position: "absolute",
           width: "13.021vw",
           objectFit: "cover",
@@ -208,12 +268,12 @@ const ParallaxSection = () => {
       />
 
       <animated.img
-        src="/images/3D/img9.jpg"
+        src="/images/parallax/pic_04.jpg"
         alt="Parallax layer 3"
-        onMouseEnter={() => handleHover("connor", true)}
-        onMouseLeave={() => handleHover("connor", false)}
+        onMouseEnter={() => handleHover("px_pic04", true)}
+        onMouseLeave={() => handleHover("px_pic04", false)}
         style={{
-          ...connor,
+          ...px_pic04,
           position: "absolute",
           width: "50vw",
           objectFit: "cover",
@@ -223,12 +283,27 @@ const ParallaxSection = () => {
       />
 
       <animated.img
-        src="/images/3D/img10.jpg"
+        src="/images/parallax/pic_05.jpg"
         alt="Parallax layer 3"
-        onMouseEnter={() => handleHover("newL", true)}
-        onMouseLeave={() => handleHover("newL", false)}
+        onMouseEnter={() => handleHover("px_pic05", true)}
+        onMouseLeave={() => handleHover("px_pic05", false)}
         style={{
-          ...newL,
+          ...px_pic05,
+          position: "absolute",
+          width: "24vw",
+          objectFit: "cover",
+          zIndex: 3,
+          cursor: "pointer",
+        }}
+      />
+
+      <animated.img
+        src="/images/parallax/pic_06.jpg"
+        alt="Parallax layer 3"
+        onMouseEnter={() => handleHover("px_pic06", true)}
+        onMouseLeave={() => handleHover("px_pic06", false)}
+        style={{
+          ...px_pic06,
           position: "absolute",
           width: "13.021vw",
           objectFit: "cover",
@@ -238,12 +313,72 @@ const ParallaxSection = () => {
       />
 
       <animated.img
-        src="/images/3D/img11.jpg"
+        src="/images/parallax/pic_07.jpg"
         alt="Parallax layer 3"
-        onMouseEnter={() => handleHover("newR", true)}
-        onMouseLeave={() => handleHover("newR", false)}
+        onMouseEnter={() => handleHover("px_pic07", true)}
+        onMouseLeave={() => handleHover("px_pic07", false)}
         style={{
-          ...newR,
+          ...px_pic07,
+          position: "absolute",
+          width: "13.021vw",
+          objectFit: "cover",
+          zIndex: 3,
+          cursor: "pointer",
+        }}
+      />
+
+      <animated.img
+        src="/images/parallax/pic_08.jpg"
+        alt="Parallax layer 3"
+        onMouseEnter={() => handleHover("px_pic08", true)}
+        onMouseLeave={() => handleHover("px_pic08", false)}
+        style={{
+          ...px_pic08,
+          position: "absolute",
+          width: "40vw",
+          objectFit: "cover",
+          zIndex: 3,
+          cursor: "pointer",
+        }}
+      />
+
+      <animated.img
+        src="/images/parallax/pic_09.jpg"
+        alt="Parallax layer 3"
+        onMouseEnter={() => handleHover("px_pic09", true)}
+        onMouseLeave={() => handleHover("px_pic09", false)}
+        style={{
+          ...px_pic09,
+          position: "absolute",
+          width: "40vw",
+          objectFit: "cover",
+          zIndex: 3,
+          cursor: "pointer",
+        }}
+      />
+
+      <animated.img
+        src="/images/parallax/pic_10.jpg"
+        alt="Parallax layer 3"
+        onMouseEnter={() => handleHover("px_pic10", true)}
+        onMouseLeave={() => handleHover("px_pic10", false)}
+        style={{
+          ...px_pic10,
+          position: "absolute",
+          width: "13.021vw",
+          objectFit: "cover",
+          zIndex: 3,
+          cursor: "pointer",
+        }}
+      />
+
+      <animated.img
+        src="/images/parallax/pic_11.jpg"
+        alt="Parallax layer 3"
+        onMouseEnter={() => handleHover("px_pic11", true)}
+        onMouseLeave={() => handleHover("px_pic11", false)}
+        style={{
+          ...px_pic11,
           position: "absolute",
           width: "26vw",
           objectFit: "cover",
@@ -252,29 +387,16 @@ const ParallaxSection = () => {
         }}
       />
 
+      {/* Текстовые блоки */}
       <animated.div
         onMouseEnter={() => handleHover("textBlock", true)}
         onMouseLeave={() => handleHover("textBlock", false)}
         style={{
           ...textBlockFashion,
-          position: "absolute",
-          zIndex: 4,
-          cursor: "pointer",
-          padding: "0 0.8vw",
-          backgroundColor: "var(--white)",
+          ...STYLES.textBlock,
         }}
       >
-        <h3
-          style={{
-            fontFamily: '"Newsreader", sans-serif',
-            fontSize: "3.555vw",
-            color: "#000",
-            fontWeight: "500",
-            lineHeight: "1.2",
-          }}
-        >
-          fashion
-        </h3>
+        <h3 style={STYLES.heading}>fashion</h3>
       </animated.div>
 
       <animated.div
@@ -282,25 +404,68 @@ const ParallaxSection = () => {
         onMouseLeave={() => handleHover("textBlock", false)}
         style={{
           ...textBlockCommercial,
-          position: "absolute",
-          zIndex: 4,
-          cursor: "pointer",
-          padding: "0 0.8vw",
-          backgroundColor: "var(--white)",
+          ...STYLES.textBlock,
         }}
       >
-        <h3
-          style={{
-            fontFamily: '"Newsreader", sans-serif',
-            fontSize: "3.555vw",
-            color: "#000",
-            fontWeight: "500",
-            lineHeight: "1.2",
-          }}
-        >
-          commercial
-        </h3>
+        <h3 style={STYLES.heading}>e-commerce</h3>
       </animated.div>
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockEvents,
+          ...STYLES.textBlock,
+        }}
+      >
+        <h3 style={STYLES.heading}>events</h3>
+      </animated.div>
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockMagazine,
+          ...STYLES.textBlock,
+        }}
+      >
+        <h3 style={STYLES.heading}>magazine</h3>
+      </animated.div>
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockReportage,
+          ...STYLES.textBlock,
+        }}
+      >
+        <h3 style={STYLES.heading}>reportage</h3>
+      </animated.div>
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockPersonal,
+          ...STYLES.textBlock,
+        }}
+      >
+        <h3 style={STYLES.heading}>personal</h3>
+      </animated.div>
+
+      <animated.div
+        onMouseEnter={() => handleHover("textBlock", true)}
+        onMouseLeave={() => handleHover("textBlock", false)}
+        style={{
+          ...textBlockInterior,
+          ...STYLES.textBlock,
+        }}
+      >
+        <h3 style={STYLES.heading}>interior</h3>
+      </animated.div>
+
+      <div className="parallax-fade"></div>
     </div>
   );
 };

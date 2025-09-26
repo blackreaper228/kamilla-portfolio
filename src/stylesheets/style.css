@@ -10,6 +10,7 @@ body {
   padding-top: 100px;
   position: relative;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   /* transform-style: preserve-3d; */
 }
 
@@ -336,14 +337,16 @@ nav {
   background-color: var(--black);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding-top: 7.813vw;
+  box-sizing: border-box;
 
   h1 {
     color: var(--white);
   }
 
   h2 {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -506,6 +509,8 @@ nav.BGactive {
   font-size: 2vw;
   font-family: "Inter", sans-serif;
   font-weight: 700;
+  text-decoration: none;
+  color: var(--black);
 }
 
 .bookAShootWrap {
@@ -562,7 +567,7 @@ h2 {
   text-transform: uppercase;
   max-width: 81.719vw;
   line-height: 1;
-  margin: 0px 0px 7vw 3.008vw;
+  margin: 0px 0px 0vw 3.008vw;
 }
 
 .star {
@@ -626,4 +631,22 @@ h2 {
     text-indent: 20%;
     text-align: justify;
   }
+}
+
+.parallax-fade {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+}
+
+.footerBottomWrap {
+  display: flex;
+  flex-direction: column;
 }
