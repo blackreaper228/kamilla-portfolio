@@ -22,9 +22,172 @@
     />
     <meta name="apple-mobile-web-app-title" content="ekmv.ph" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <script type="module" crossorigin src="/assets/main-51UDt9TH.js"></script>
+
+    <!-- Стили для фотогалереи -->
+    <script type="module" crossorigin src="/assets/reportage-BPKY9yre.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/main-51UDt9TH.js">
+    <link rel="modulepreload" crossorigin href="/assets/photoGallery-Df32L1Do.js">
     <link rel="stylesheet" crossorigin href="/assets/main-D9kTbsdl.css">
+    <link rel="stylesheet" crossorigin href="/assets/photoGallery-CPpo5j6M.css">
   </head>
-  <body>
+  <body class="photosPage">
+    <div id="gallery-container"></div>
+    <!-- Подключаем скрипт галереи -->
+    <div class="cursor outer"></div>
+    <nav class="navBG">
+      <ul>
+        <div class="navContainer">
+          <div class="leftNav">
+            <li><a href="/index.html">Kamilla</a></li>
+            <div class="dropDownPhotos">
+              <li style="opacity: 0; pointer-events: none"><a>Photos</a></li>
+            </div>
+            <div class="dropDownPhotos">
+              <li style="opacity: 0; pointer-events: none"><a>Videos</a></li>
+            </div>
+          </div>
+          <div class="midNav">
+            <li>
+              <a
+                href="https://www.instagram.com/ekmv.ph?igsh=M3ppMDl0bmxsaXR4"
+                target="_blank"
+                >Instagram</a
+              >
+            </li>
+          </div>
+        </div>
+        <li class="contact">
+          <a href="https://t.me/kami_tt" target="_blank"
+            >Contact <span class="arrowLink">↗</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav>
+      <ul>
+        <div class="navContainer">
+          <div class="leftNav">
+            <li><a href="/index.html">Kamilla</a></li>
+            <div class="dropDownPhotos" id="dropDownPhotosID">
+              <li style="opacity: 1; pointer-events: auto"><a>Photos</a></li>
+            </div>
+            <div class="dropDownPhotos" id="dropDownVideosID">
+              <li style="opacity: 1; pointer-events: auto"><a>Videos</a></li>
+            </div>
+          </div>
+          <div class="midNav">
+            <li>
+              <a
+                href="https://www.instagram.com/ekmv.ph?igsh=M3ppMDl0bmxsaXR4"
+                target="_blank"
+                >Instagram</a
+              >
+            </li>
+          </div>
+        </div>
+        <li class="contact">
+          <a href="https://t.me/kami_tt" target="_blank"
+            >Contact <span class="arrowLink">↗</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="navTransparent">
+      <ul>
+        <div class="navContainer">
+          <div class="leftNav">
+            <li><a href="/index.html">Kamilla</a></li>
+            <div class="dropDownPhotos" id="dropDownPhotosActive">
+              <li style="opacity: 0; pointer-events: none">
+                <a>Photos</a>
+              </li>
+              <ul style="pointer-events: auto">
+                <li><a href="/pages/photos/e-commerce.html">e-commerce</a></li>
+                <li><a href="/pages/photos/events.html">events</a></li>
+                <li><a href="/pages/photos/fashion.html">fashion</a></li>
+                <li><a href="/pages/photos/interior.html">interior</a></li>
+                <li>
+                  <a href="/pages/photos/magazine.html">magazine cover</a>
+                </li>
+                <li><a href="/pages/photos/personal.html">personal</a></li>
+                <li><a href="/pages/photos/product.html">product</a></li>
+                <li><a href="/pages/photos/bts.html">bts</a></li>
+              </ul>
+            </div>
+            <div class="dropDownPhotos Videos" id="dropDownPhotosActiveVideos">
+              <li style="opacity: 0; pointer-events: none">
+                <a>Videos</a>
+              </li>
+              <ul style="pointer-events: auto">
+                <li><a href="/pages/videos/videos.html">videos_1</a></li>
+                <li><a href="/pages/videos/videos.html">videos_2</a></li>
+                <!-- <li><a href="#">videos_3</a></li> -->
+                <!-- <li><a href="#">videos_4</a></li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="midNav">
+            <li>
+              <a
+                href="https://www.instagram.com/ekmv.ph?igsh=M3ppMDl0bmxsaXR4"
+                target="_blank"
+                >Instagram</a
+              >
+            </li>
+          </div>
+        </div>
+        <li class="contact">
+          <a href="https://t.me/kami_tt" target="_blank"
+            >Contact <span class="arrowLink">↗</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <section class="fourthScreen">
+      <h2>
+        Creating elegant and impactful content tailored for the discerning
+        clientele of the UAE.
+      </h2>
+      <div class="footerBottomWrap">
+        <div class="footerWrap">
+          <div class="footerBottom">
+            <div class="bookAShootWrap">
+              <a class="bookAShoot" href="https://t.me/kami_tt" target="_blank"
+                >BOOK A SHOOT <span>↗</span></a
+              >
+            </div>
+            <h1>let’s make art</h1>
+            <p>(and money)</p>
+          </div>
+          <a
+            href="#"
+            class="goUp"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+            >↑</a
+          >
+        </div>
+        <div class="marqueeFooter">
+          <div class="marqueeFooterWrap">
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+          </div>
+        </div>
+        <div class="footerDesignedBy">
+          <p>
+            designed & and developed by
+            <a href="https://t.me/black_reaper228" target="_blank"
+              >коля рипер↗</a
+            >
+          </p>
+          <p>©2025</p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
