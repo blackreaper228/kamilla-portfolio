@@ -1,5 +1,5 @@
 * {
-  cursor: none !important;
+  cursor: none;
 }
 
 body {
@@ -649,4 +649,23 @@ h2 {
 .footerBottomWrap {
   display: flex;
   flex-direction: column;
+}
+
+hr {
+  display: flex;
+  height: 1px;
+  width: calc(100vw - 24px);
+  border: 0;
+  border-top: 1px solid var(--gray);
+}
+
+.test {
+  cursor: pointer;
+}
+
+.font-test {
+  font-family: "stratos-bold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: normal;
 }

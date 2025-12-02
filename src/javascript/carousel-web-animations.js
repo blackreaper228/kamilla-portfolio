@@ -4,18 +4,29 @@ export const carousel = () => {
     const carouselLine = document.querySelector(".carouselLine");
 
     if (!carousel || !carouselLine) {
-      console.error("Carousel elements not found");
       return;
     }
 
     console.log("Web Animations API carousel initialized");
 
     // Настройки
-    const imageWidth = 26.563; // vw
-    const gapWidth = 0.781; // vw
+    let imageWidth; // vw
+    let gapWidth; // vw
     const imageCount = 5;
     const totalGaps = 4.5;
-    const oneSetWidth = imageWidth * imageCount + gapWidth * totalGaps;
+    let oneSetWidth;
+
+    const recalcLayout = () => {
+      if (window.innerWidth < 768) {
+        imageWidth = 63.104; // vw for <768px
+        gapWidth = 3.053; // vw for <768px
+      } else {
+        imageWidth = 26.563; // vw default
+        gapWidth = 0.781; // vw default
+      }
+      oneSetWidth = imageWidth * imageCount + gapWidth * totalGaps;
+    };
+    recalcLayout();
 
     let currentAnimation = null;
     let isHovered = false;
@@ -133,6 +144,21 @@ export const carousel = () => {
     // Обработка изменения размера окна
     window.addEventListener("resize", () => {
       const targetDur = isHovered ? 30000 : 15000;
+      // Пересчитываем размеры для адаптива
+      recalcLayout();
+
+      // Перестраиваем анимацию с сохранением прогресса
+      if (currentAnimation) {
+        const currentTime = currentAnimation.currentTime || 0;
+        const oldDuration =
+          currentAnimation.effect.getComputedTiming().duration;
+        const currentProgress = oldDuration ? currentTime / oldDuration : 0;
+        createAnimation(currentDuration);
+        currentAnimation.currentTime = currentProgress * currentDuration;
+      } else {
+        createAnimation(currentDuration);
+      }
+
       smoothChangeSpeed(targetDur);
     });
 

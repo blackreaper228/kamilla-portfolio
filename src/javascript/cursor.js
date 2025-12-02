@@ -1,6 +1,11 @@
 export const cursor = () => {
   const cursors = document.querySelectorAll(".cursor");
 
+  // Проверяем, что курсоры существуют
+  if (cursors.length === 0) {
+    return;
+  }
+
   window.addEventListener("mousemove", (e) => {
     let x = e.pageX;
     let y = e.pageY;

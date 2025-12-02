@@ -280,25 +280,56 @@ class PhotoGallery {
     const dropdownWrapper = document.createElement("div");
     dropdownWrapper.className = "dropdown-wrapper";
 
-    const dropdown = document.createElement("select");
-    dropdown.className = "category-dropdown";
-    dropdown.value = currentCategory;
+    // Убираем нативный select. Используем только кастомный дропдаун
+
+    // Кастомный дропдаун для единых шрифтов в списке
+    const custom = document.createElement("div");
+    custom.className = "custom-dropdown";
+    const customButton = document.createElement("button");
+    customButton.type = "button";
+    customButton.className = "custom-dropdown-button";
+    customButton.setAttribute("aria-haspopup", "listbox");
+    customButton.setAttribute("aria-expanded", "false");
+    const current = categories.find((c) => c.key === currentCategory);
+    customButton.textContent = current ? current.label : currentCategory;
+    const customArrow = document.createElement("span");
+    customArrow.className = "custom-dropdown-arrow";
+    customArrow.textContent = "↓";
+    customButton.appendChild(customArrow);
+    const customList = document.createElement("ul");
+    customList.className = "custom-dropdown-list";
+    customList.setAttribute("role", "listbox");
 
     categories.forEach((cat) => {
-      const option = document.createElement("option");
-      option.value = cat.key;
-      option.textContent = cat.label;
-      option.selected = cat.key === currentCategory;
-      dropdown.appendChild(option);
+      const li = document.createElement("li");
+      li.className = "custom-dropdown-item";
+      li.setAttribute("role", "option");
+      if (cat.key === currentCategory) li.setAttribute("aria-selected", "true");
+      li.textContent = cat.label;
+      li.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = `/pages/photos/${cat.key}.html`;
+      });
+      customList.appendChild(li);
     });
 
-    // Обработчик изменения категории
-    dropdown.addEventListener("change", (e) => {
-      const newCategory = e.target.value;
-      window.location.href = `/pages/photos/${newCategory}.html`;
+    // Логика кастомного дропдауна
+    const toggleCustom = () => {
+      const isOpen = custom.classList.toggle("open");
+      customButton.setAttribute("aria-expanded", String(isOpen));
+    };
+    customButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleCustom();
+    });
+    document.addEventListener("click", () => {
+      custom.classList.remove("open");
+      customButton.setAttribute("aria-expanded", "false");
     });
 
-    dropdownWrapper.appendChild(dropdown);
+    custom.appendChild(customButton);
+    custom.appendChild(customList);
+    dropdownWrapper.appendChild(custom);
     return dropdownWrapper;
   }
 
@@ -388,19 +419,15 @@ class PhotoGallery {
     prevButton.className = "lightbox-prev";
     prevButton.innerHTML = "‹";
 
-    const counter = document.createElement("span");
-    counter.className = "lightbox-counter";
-    counter.textContent = `${currentIndex + 1} / ${allImages.length}`;
-
     const nextButton = document.createElement("button");
     nextButton.className = "lightbox-next";
     nextButton.innerHTML = "›";
 
     nav.appendChild(prevButton);
-    nav.appendChild(counter);
     nav.appendChild(nextButton);
 
-    lightboxContent.appendChild(closeButton);
+    // Крестик располагаем на всем оверлее, а не внутри контента
+    lightbox.appendChild(closeButton);
     lightboxContent.appendChild(image);
     lightboxContent.appendChild(nav);
     lightbox.appendChild(lightboxContent);
@@ -410,7 +437,7 @@ class PhotoGallery {
       if (newIndex >= 0 && newIndex < allImages.length) {
         currentIndex = newIndex;
         image.src = allImages[currentIndex];
-        counter.textContent = `${currentIndex + 1} / ${allImages.length}`;
+        // обновление счётчика удалено
 
         // Показываем/скрываем кнопки на границах
         prevButton.style.opacity = currentIndex > 0 ? "1" : "0.3";
@@ -471,7 +498,7 @@ class PhotoGallery {
    * Основная функция для загрузки галереи
    */
   async loadGallery(category, containerId = "gallery-container") {
-    console.log(`🔍 Загружаем галерею для категории: ${category}`);
+    console.log(`Loading: ${category}`);
 
     // В dev режиме пропускаем кэш для актуальных данных
     const useCache =
@@ -492,8 +519,7 @@ class PhotoGallery {
       }
 
       // Показываем лоадер
-      container.innerHTML =
-        '<div class="gallery-loader">🔄 Загружаем фотографии...</div>';
+      container.innerHTML = '<div class="gallery-loader">Loading...</div>';
 
       // Получаем список изображений
       const imagePaths = await this.discoverImages(category);

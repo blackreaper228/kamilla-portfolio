@@ -3,7 +3,6 @@ export const reviewsCarousel = () => {
     const reviewsContainer = document.querySelector(".reviewsCarousel");
 
     if (!reviewsContainer) {
-      console.error("Reviews carousel elements not found");
       return;
     }
 

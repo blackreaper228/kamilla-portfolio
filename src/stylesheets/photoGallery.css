@@ -34,61 +34,98 @@ body.photosPage {
   margin-right: 1.8vw;
 }
 
+/* Убираем псевдо-стрелку: теперь используется реальный элемент */
 .dropdown-wrapper::after {
-  font-family: "Inter", sans-serif;
-  content: "↓";
-  position: absolute;
-  right: -10%;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 2vw;
-  color: var(--black);
-  font-weight: 700;
+  content: none;
 }
 
-.category-dropdown {
+/* старые стили нативного селектора удалены */
+
+/* Кастомный дропдаун */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.6vw;
+}
+
+.custom-dropdown-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: transparent;
+  border: none;
+  padding: 0;
   font-family: "Newsreader", sans-serif;
   font-size: 3.555vw;
   font-weight: 500;
   color: var(--black);
-  background: transparent;
-  border: none;
-  cursor: pointer;
   text-transform: lowercase;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding: 0 20px 0 0;
-  min-width: 140px;
-  text-align: right;
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.category-dropdown:focus {
-  outline: none;
-}
-
-.category-dropdown option {
-  font-family: "Newsreader", sans-serif;
-  font-size: 16px;
+.custom-dropdown-arrow {
+  font-family: "Inter", sans-serif;
+  font-size: 2vw;
   color: var(--black);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.custom-dropdown-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
   background: var(--white);
+  list-style: none;
+  margin: 0.4rem 0 0 0;
+  min-width: 12rem;
+  z-index: 1000;
+  display: none;
+  text-align: right; /* прибиваем содержимое к правому краю */
+  padding-top: 0.5vw;
+}
+
+.custom-dropdown.open .custom-dropdown-list {
+  display: block;
+}
+
+.custom-dropdown-item {
+  padding: 0.35rem 0.8rem;
+  font-family: "Newsreader", sans-serif;
+  font-size: 2vw;
+  font-weight: 500;
+  color: var(--black);
   text-transform: lowercase;
+  white-space: nowrap;
+  text-align: right;
+  padding-right: 3.2vw;
+  padding-left: 3.2vw;
+  min-width: 17.188vw;
+  user-select: none;
+}
+
+.custom-dropdown-item[aria-selected="true"],
+.custom-dropdown-item:hover {
+  background: var(--black);
+  color: var(--white);
+  font-style: italic;
+  font-weight: 700;
 }
 
 .photos-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0.781vw;
-  margin-bottom: 0.781vw;
+  margin-bottom: 4vw;
   width: 100%;
 }
 
 .photo-item {
   position: relative;
   overflow: hidden;
-  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
@@ -140,7 +177,6 @@ body.photosPage {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .lightbox-content {
@@ -151,21 +187,21 @@ body.photosPage {
 }
 
 .lightbox-image {
-  max-width: 100%;
+  width: 32vw;
   max-height: 100%;
   object-fit: contain;
 }
 
 .lightbox-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
+  position: fixed;
+  top: 20px;
+  right: 24px;
   font-size: 2rem;
   color: white;
-  cursor: pointer;
   background: none;
   border: none;
   font-family: Arial, sans-serif;
+  z-index: 10001;
 }
 
 .lightbox-close:hover {
@@ -174,26 +210,27 @@ body.photosPage {
 
 .lightbox-nav {
   position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  left: -5vw;
+  right: -5vw;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
   color: white;
   font-family: "Newsreader", sans-serif;
+  pointer-events: none;
 }
 
 .lightbox-prev,
 .lightbox-next {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  all: unset;
   color: white;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.3s ease;
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: 0.5rem 0.8rem;
+  pointer-events: auto;
+  user-select: none;
 }
 
 .lightbox-prev:hover,
@@ -201,10 +238,7 @@ body.photosPage {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.lightbox-counter {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
+/* .lightbox-counter удалён */
 
 /* 📱 Мобильные устройства */
 @media (max-width: 768px) {
@@ -220,10 +254,6 @@ body.photosPage {
 
   .dropdown-wrapper {
     align-self: flex-end;
-  }
-
-  .category-dropdown {
-    font-size: 2rem;
   }
 
   .photos-grid {
@@ -284,4 +314,34 @@ body.photosPage {
 
 .photo-gallery[data-category="events"] .gallery-image {
   aspect-ratio: 3/2; /* Горизонтальные фото для событий */
+}
+
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 2rem;
+  }
+
+  .custom-dropdown-button {
+    font-size: 2rem;
+  }
+
+  .gallery-header {
+    flex-direction: row;
+  }
+
+  .custom-dropdown-arrow {
+    font-size: 1.2rem;
+  }
+
+  .custom-dropdown-item {
+    font-size: 2rem;
+
+    padding-right: 2.5rem;
+    padding-left: 2rem;
+  }
+
+  .custom-dropdown-list {
+    margin: 0.2rem 0 0 0;
+    right: -0.5rem;
+  }
 }

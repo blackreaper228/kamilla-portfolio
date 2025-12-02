@@ -34,3 +34,19 @@
   src: url("../fonts/Newsreader-Italic-VariableFont_opsz,wght.woff2")
     format("woff2");
 }
+
+@font-face {
+  font-family: "stratos-bold";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src: url("../fonts/stratos-bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "HKGrotesk-Regular";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src: url("../fonts/HKGrotesk-Regular.woff2") format("woff2");
+}

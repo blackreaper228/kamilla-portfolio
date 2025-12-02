@@ -6,6 +6,11 @@ export const trail = () => {
 
     const container = document.querySelector(".firstScreen");
 
+    // Проверяем, что контейнер существует
+    if (!container) {
+      return;
+    }
+
     const config = {
       imageCount: 10,
       imageLifespan: 350,
@@ -42,6 +47,7 @@ export const trail = () => {
       scrollTicking = false;
 
     const isInContainer = (x, y) => {
+      if (!container) return false;
       const rect = container.getBoundingClientRect();
       return (
         x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
@@ -84,6 +90,8 @@ export const trail = () => {
     };
 
     const createImage = () => {
+      if (!container) return;
+
       const img = document.createElement("img");
       img.classList.add("trail-img");
 

@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://us-east.storage.cloudconvert.com/tasks/5586e749-eb1d-404a-99a3-0f03295b3629/HKGrotesk-Regular.woff2?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20251014%2Fva%2Fs3%2Faws4_request&X-Amz-Date=20251014T123513Z&X-Amz-Expires=86400&X-Amz-Signature=1cee947f5dd118c57d443f20507f6ef775f001eaa8c9e0f6fac2a45eed23d30d&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22HKGrotesk-Regular.woff2%22&response-content-type=font%2Fwoff2&x-id=GetObject

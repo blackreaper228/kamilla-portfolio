@@ -26,115 +26,7 @@
   <body>
     <script type="module" src="/src/javascript/main.jsx"></script>
     <div class="cursor outer"></div>
-    <nav class="navBG">
-      <ul>
-        <div class="navContainer">
-          <div class="leftNav">
-            <li><a href="/index.html">Kamilla</a></li>
-            <div class="dropDownPhotos">
-              <li style="opacity: 0; pointer-events: none"><a>Photos</a></li>
-            </div>
-            <div class="dropDownPhotos">
-              <li style="opacity: 0; pointer-events: none"><a>Videos</a></li>
-            </div>
-          </div>
-          <div class="midNav">
-            <li>
-              <a
-                href="https://www.instagram.com/ekmv.ph?igsh=M3ppMDl0bmxsaXR4"
-                target="_blank"
-                >Instagram</a
-              >
-            </li>
-          </div>
-        </div>
-        <li class="contact">
-          <a href="https://t.me/kami_tt" target="_blank"
-            >Contact <span class="arrowLink">↗</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav>
-      <ul>
-        <div class="navContainer">
-          <div class="leftNav">
-            <li><a href="/index.html">Kamilla</a></li>
-            <div class="dropDownPhotos" id="dropDownPhotosID">
-              <li style="opacity: 1; pointer-events: auto"><a>Photos</a></li>
-            </div>
-            <div class="dropDownPhotos" id="dropDownVideosID">
-              <li style="opacity: 1; pointer-events: auto"><a>Videos</a></li>
-            </div>
-          </div>
-          <div class="midNav">
-            <li>
-              <a
-                href="https://www.instagram.com/ekmv.ph?igsh=M3ppMDl0bmxsaXR4"
-                target="_blank"
-                >Instagram</a
-              >
-            </li>
-          </div>
-        </div>
-        <li class="contact">
-          <a href="https://t.me/kami_tt" target="_blank"
-            >Contact <span class="arrowLink">↗</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="navTransparent">
-      <ul>
-        <div class="navContainer">
-          <div class="leftNav">
-            <li><a href="/index.html">Kamilla</a></li>
-            <div class="dropDownPhotos" id="dropDownPhotosActive">
-              <li style="opacity: 0; pointer-events: none">
-                <a>Photos</a>
-              </li>
-              <ul style="pointer-events: auto">
-                <li><a href="/pages/photos/e-commerce.html">e-commerce</a></li>
-                <li><a href="/pages/photos/events.html">events</a></li>
-                <li><a href="/pages/photos/fashion.html">fashion</a></li>
-                <li><a href="/pages/photos/interior.html">interior</a></li>
-                <li>
-                  <a href="/pages/photos/magazine.html">magazine cover</a>
-                </li>
-                <li><a href="/pages/photos/personal.html">personal</a></li>
-                <li><a href="/pages/photos/product.html">product</a></li>
-                <li><a href="/pages/photos/bts.html">bts</a></li>
-              </ul>
-            </div>
-            <div class="dropDownPhotos Videos" id="dropDownPhotosActiveVideos">
-              <li style="opacity: 0; pointer-events: none">
-                <a>Videos</a>
-              </li>
-              <ul style="pointer-events: auto">
-                <li><a href="/pages/videos/videos.html">videos_1</a></li>
-                <li><a href="/pages/videos/videos.html">videos_2</a></li>
-                <!-- <li><a href="#">videos_3</a></li> -->
-                <!-- <li><a href="#">videos_4</a></li> -->
-              </ul>
-            </div>
-          </div>
-          <div class="midNav">
-            <li>
-              <a
-                href="https://www.instagram.com/ekmv.ph?igsh=M3ppMDl0bmxsaXR4"
-                target="_blank"
-                >Instagram</a
-              >
-            </li>
-          </div>
-        </div>
-        <li class="contact">
-          <a href="https://t.me/kami_tt" target="_blank"
-            >Contact <span class="arrowLink">↗</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div id="navigation-mount-point"></div>
 
     <section class="firstScreen">
       <div class="kamilla"></div>
@@ -345,9 +237,88 @@
         </div>
       </div>
     </section>
+    <section class="reviewsScreenMobile">
+      <div class="reviewsCarousel">
+        <div class="reviewCard">
+          <div class="reviewCardTop">
+            <div class="starsWrap">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p>
+              Working with Kamilla was an absolute pleasure. She perfectly
+              captured our brand's aesthetic for our new campaign. The attention
+              to detail in both the photos and the video content was
+              exceptional. Highly professional and incredibly talented!
+            </p>
+          </div>
+          <p class="reviewCardAuthor">Roman Shelukhin</p>
+        </div>
+        <hr />
+        <div class="reviewCard">
+          <div class="reviewCardTop">
+            <div class="starsWrap">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p>
+              Kamilla is more than just a videographer; she is a storyteller.
+              She managed to capture the true emotion and energy of our event,
+              creating a film that we will cherish forever. The photos were
+              stunning and delivered incredibly fast.
+            </p>
+          </div>
+          <p class="reviewCardAuthor">Roman Shelukhin</p>
+        </div>
+        <hr />
+        <div class="reviewCard">
+          <div class="reviewCardTop">
+            <div class="starsWrap">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p>
+              Working with Kamilla was an absolute pleasure. She perfectly
+              captured our brand's aesthetic for our new campaign. The attention
+              to detail in both the photos and the video content was
+              exceptional. Highly professional and incredibly talented!
+            </p>
+          </div>
+          <p class="reviewCardAuthor">Roman Shelukhin</p>
+        </div>
+        <hr />
+        <div class="reviewCard">
+          <div class="reviewCardTop">
+            <div class="starsWrap">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p>
+              Kamilla is more than just a videographer; she is a storyteller.
+              She managed to capture the true emotion and energy of our event,
+              creating a film that we will cherish forever. The photos were
+              stunning and delivered incredibly fast.
+            </p>
+          </div>
+          <p class="reviewCardAuthor">Roman Shelukhin</p>
+        </div>
+      </div>
+    </section>
     <section class="fourthScreen">
       <h2>
-        Creating elegant and impactful content tailored for the discerning
+        Creating elegant and impactful content tailored for the discerning
         clientele of the UAE.
       </h2>
       <div class="footerBottomWrap">
@@ -358,7 +329,7 @@
                 >BOOK A SHOOT <span>↗</span></a
               >
             </div>
-            <h1>let’s make art</h1>
+            <h1>let’s make art</h1>
             <p>(and money)</p>
           </div>
           <a

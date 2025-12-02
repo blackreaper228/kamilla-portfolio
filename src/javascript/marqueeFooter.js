@@ -4,7 +4,6 @@ export const marqueeFooter = () => {
     const marqueeWrap = document.querySelector(".marqueeFooterWrap");
 
     if (!marqueeContainer || !marqueeWrap) {
-      console.error("Marquee footer elements not found");
       return;
     }
 

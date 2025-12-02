@@ -1,31 +1,47 @@
+// Защита от множественных инициализаций
+let navColorInitialized = false;
+
 export const navColor = () => {
+  if (navColorInitialized) {
+    console.log("🔄 navColor already initialized, skipping...");
+    return;
+  }
+
   const navElement = document.querySelector(
     "nav:not(.navBG):not(.navTransparent)"
   );
   const dropDownPhotosID = document.getElementById("dropDownPhotosID");
-  const dropDownVideosID = document.getElementById("dropDownVideosID");
   const navBG = document.querySelector(".navBG");
   const dropDownPhotosActive = document.getElementById("dropDownPhotosActive");
-  const dropDownPhotosActiveVideos = document.getElementById(
-    "dropDownPhotosActiveVideos"
-  );
+
+  console.log("🔍 navColor - Elements found:", {
+    navElement: !!navElement,
+    dropDownPhotosID: !!dropDownPhotosID,
+    navBG: !!navBG,
+    dropDownPhotosActive: !!dropDownPhotosActive,
+  });
+
+  // Проверяем, что все необходимые элементы существуют
+  if (!navElement || !navBG) {
+    console.warn("❌ navColor - Missing required elements");
+    return;
+  }
+
+  navColorInitialized = true;
 
   const showNavBG = () => {
     navBG.classList.add("BGactive");
   };
 
   const hideNavBG = () => {
-    // Проверяем, не находится ли курсор в любом из navbar элементов или dropdown элементов
     setTimeout(() => {
       const isHoveringNavbar = navElement.matches(":hover");
-      const isHoveringPhotosDropdown = dropDownPhotosActive.matches(":hover");
-      const isHoveringVideosDropdown =
-        dropDownPhotosActiveVideos.matches(":hover");
+      const isHoveringPhotosDropdown =
+        dropDownPhotosActive?.matches(":hover") || false;
 
       if (
         !isHoveringNavbar &&
-        !isHoveringPhotosDropdown &&
-        !isHoveringVideosDropdown
+        !isHoveringPhotosDropdown
       ) {
         navBG.classList.remove("BGactive");
       }
@@ -33,19 +49,15 @@ export const navColor = () => {
   };
 
   const showPhotosDropdown = () => {
-    dropDownPhotosActive.classList.add("dropDownActive");
+    if (dropDownPhotosActive) {
+      dropDownPhotosActive.classList.add("dropDownActive");
+    }
   };
 
   const hidePhotosDropdown = () => {
-    dropDownPhotosActive.classList.remove("dropDownActive");
-  };
-
-  const showVideosDropdown = () => {
-    dropDownPhotosActiveVideos.classList.add("dropDownActive");
-  };
-
-  const hideVideosDropdown = () => {
-    dropDownPhotosActiveVideos.classList.remove("dropDownActive");
+    if (dropDownPhotosActive) {
+      dropDownPhotosActive.classList.remove("dropDownActive");
+    }
   };
 
   // Обработчики для всего navbar - показывать белый фон
@@ -53,64 +65,37 @@ export const navColor = () => {
   navElement.addEventListener("mouseleave", hideNavBG);
 
   // Обработчики для Photos dropdown
-  dropDownPhotosID.addEventListener("mouseenter", showPhotosDropdown);
+  if (dropDownPhotosID) {
+    dropDownPhotosID.addEventListener("mouseenter", showPhotosDropdown);
 
-  dropDownPhotosID.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      if (
-        !dropDownPhotosActive.matches(":hover") &&
-        !dropDownPhotosID.matches(":hover")
-      ) {
-        hidePhotosDropdown();
-      }
-    }, 100);
-  });
+    dropDownPhotosID.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (
+          !dropDownPhotosActive?.matches(":hover") &&
+          !dropDownPhotosID.matches(":hover")
+        ) {
+          hidePhotosDropdown();
+        }
+      }, 100);
+    });
+  }
 
-  dropDownPhotosActive.addEventListener("mouseenter", () => {
-    showNavBG(); // Поддерживаем белый фон
-    showPhotosDropdown();
-  });
+  if (dropDownPhotosActive) {
+    dropDownPhotosActive.addEventListener("mouseenter", () => {
+      showNavBG(); // Поддерживаем белый фон
+      showPhotosDropdown();
+    });
 
-  dropDownPhotosActive.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      if (
-        !dropDownPhotosActive.matches(":hover") &&
-        !dropDownPhotosID.matches(":hover")
-      ) {
-        hidePhotosDropdown();
-      }
-    }, 100);
-    hideNavBG(); // Проверяем, нужно ли скрыть фон
-  });
-
-  // Обработчики для Videos dropdown
-  dropDownVideosID.addEventListener("mouseenter", showVideosDropdown);
-
-  dropDownVideosID.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      if (
-        !dropDownPhotosActiveVideos.matches(":hover") &&
-        !dropDownVideosID.matches(":hover")
-      ) {
-        hideVideosDropdown();
-      }
-    }, 100);
-  });
-
-  dropDownPhotosActiveVideos.addEventListener("mouseenter", () => {
-    showNavBG(); // Поддерживаем белый фон
-    showVideosDropdown();
-  });
-
-  dropDownPhotosActiveVideos.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      if (
-        !dropDownPhotosActiveVideos.matches(":hover") &&
-        !dropDownVideosID.matches(":hover")
-      ) {
-        hideVideosDropdown();
-      }
-    }, 100);
-    hideNavBG(); // Проверяем, нужно ли скрыть фон
-  });
+    dropDownPhotosActive.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (
+          !dropDownPhotosActive.matches(":hover") &&
+          !dropDownPhotosID?.matches(":hover")
+        ) {
+          hidePhotosDropdown();
+        }
+      }, 100);
+      hideNavBG(); // Проверяем, нужно ли скрыть фон
+    });
+  }
 };
