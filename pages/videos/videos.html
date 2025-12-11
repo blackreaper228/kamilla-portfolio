@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ekmv.ph</title>
+    <title>ekmv.ph - Videos</title>
 
     <!-- favicon meta -->
     <link
@@ -22,9 +22,136 @@
     />
     <meta name="apple-mobile-web-app-title" content="ekmv.ph" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <script type="module" crossorigin src="/assets/main-BpJeUbI4.js"></script>
+
+    <!-- Стили для фотогалереи (используем те же стили) -->
+
+    <!-- Дополнительные стили для видео -->
+    <style>
+      .video-item {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: #000;
+        overflow: hidden;
+        border-radius: 0; /* Убираем скругление если нужно */
+      }
+
+      .video-item iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .video-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Убираем курсор-увеличение для видео */
+      .video-item img,
+      .video-item video,
+      .video-item iframe {
+        cursor: default;
+      }
+
+      /* Для видео не нужен hover-эффект увеличения */
+      .photo-item.video-item:hover img {
+        transform: none;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/main-CXm5JoA4.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/main-DyG2PbqW.css">
+    <link rel="stylesheet" crossorigin href="/assets/photoGallery-C_J36HcU.css">
   </head>
-  <body>
+  <body class="photosPage">
+    <div class="cursor outer"></div>
+    <div id="navigation-mount-point"></div>
+
+    <!-- Контейнер галереи с той же структурой -->
+    <div class="photo-gallery" data-category="videos">
+      <!-- Хедер с заголовком (без дропдауна, так как только одна категория) -->
+      <div class="gallery-header">
+        <h1 class="gallery-title">videos</h1>
+      </div>
+
+      <!-- Сетка для видео (используем тот же класс photos-grid) -->
+      <div class="photos-grid">
+        <!-- Видео 1 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 2 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 3 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 4 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 5 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 6 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 7 -->
+        <div class="photo-item video-item"></div>
+
+        <!-- Видео 8 -->
+        <div class="photo-item video-item"></div>
+      </div>
+    </div>
+
+    <!-- Футер (как на страницах с фото) -->
+    <section class="fourthScreen">
+      <h2>
+        Creating elegant and impactful content tailored for the discerning
+        clientele of the UAE.
+      </h2>
+      <div class="footerBottomWrap">
+        <div class="footerWrap">
+          <div class="footerBottom">
+            <div class="bookAShootWrap">
+              <a class="bookAShoot" href="https://t.me/kami_tt" target="_blank"
+                >BOOK A SHOOT <span>↗</span></a
+              >
+            </div>
+            <h1>let's make art</h1>
+            <p>(and money)</p>
+          </div>
+          <a
+            href="#"
+            class="goUp"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+            >↑</a
+          >
+        </div>
+        <div class="marqueeFooter">
+          <div class="marqueeFooterWrap">
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+            <p>Kamilla — photographer & videographer</p>
+            <p>•</p>
+          </div>
+        </div>
+        <div class="footerDesignedBy">
+          <p>
+            designed & and developed by
+            <a href="https://t.me/black_reaper228" target="_blank"
+              >коля рипер↗</a
+            >
+          </p>
+          <p>©2025</p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
