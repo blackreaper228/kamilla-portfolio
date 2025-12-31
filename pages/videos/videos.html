@@ -63,6 +63,120 @@
       .photo-item.video-item:hover img {
         transform: none;
       }
+
+      /* Стили для попапа с видео */
+      .video-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .video-popup.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .video-popup-content {
+        position: relative;
+        width: 90vw;
+        max-width: 1200px;
+        aspect-ratio: 16/9;
+      }
+
+      .video-popup-close {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 3rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 10001;
+        padding: 0.5rem;
+        transition: opacity 0.2s ease;
+      }
+
+      .video-popup-close:hover {
+        opacity: 0.7;
+      }
+
+      .video-popup-iframe-wrapper {
+        position: relative;
+        padding-top: 56.25%;
+        width: 100%;
+      }
+
+      .video-popup-iframe-wrapper iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      /* Прелоадер */
+      .video-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+      }
+
+      .video-loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .video-loader.hidden {
+        display: none;
+      }
+
+      /* Скрываем кастомный курсор когда попап открыт, но показываем стандартный */
+      body.video-popup-open .cursor {
+        display: none !important;
+      }
+
+      body.video-popup-open {
+        cursor: auto !important;
+      }
+
+      body.video-popup-open * {
+        cursor: auto !important;
+      }
+
+      @media (max-width: 768px) {
+        .video-popup-content {
+          width: 95vw;
+        }
+
+        .video-popup-close {
+          top: 1rem;
+          right: 1rem;
+          font-size: 2rem;
+        }
+      }
     </style>
   </head>
   <body class="photosPage">
@@ -79,31 +193,136 @@
 
       <!-- Сетка для видео (используем тот же класс photos-grid) -->
       <div class="photos-grid">
-        <!-- Видео 1 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 2 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 3 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 4 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 5 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 6 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 7 -->
-        <div class="photo-item video-item"></div>
-
-        <!-- Видео 8 -->
-        <div class="photo-item video-item"></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
+        <div
+          class="photo-item video-item"
+          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+        ></div>
       </div>
     </div>
+
+    <!-- Попап для видео -->
+    <div class="video-popup" id="videoPopup">
+      <button class="video-popup-close" id="closeVideoPopup">&times;</button>
+      <div class="video-popup-content">
+        <div class="video-popup-iframe-wrapper" id="videoContainer">
+          <!-- Прелоадер -->
+          <div class="video-loader" id="videoLoader">
+            <div class="video-loader-spinner"></div>
+          </div>
+          <!-- Видео будет вставлено сюда -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Скрипт для управления попапом -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const videoItems = document.querySelectorAll(".video-item");
+        const popup = document.getElementById("videoPopup");
+        const closeBtn = document.getElementById("closeVideoPopup");
+        const videoContainer = document.getElementById("videoContainer");
+        const loader = document.getElementById("videoLoader");
+
+        // Открытие попапа при клике на видео-элемент
+        videoItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            const videoUrl = item.getAttribute("data-video-url");
+            if (videoUrl) {
+              openVideoPopup(videoUrl);
+            }
+          });
+        });
+
+        // Функция открытия попапа
+        function openVideoPopup(videoUrl) {
+          // Показываем прелоадер
+          loader.classList.remove("hidden");
+
+          const iframe = document.createElement("iframe");
+          iframe.src = videoUrl;
+          iframe.allow =
+            "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;";
+          iframe.frameBorder = "0";
+          iframe.allowFullscreen = true;
+          iframe.style.cssText =
+            "position: absolute; width: 100%; height: 100%; top: 0; left: 0;";
+
+          // Скрываем прелоадер когда iframe загрузится
+          iframe.addEventListener("load", () => {
+            loader.classList.add("hidden");
+          });
+
+          // Очищаем контейнер (кроме прелоадера)
+          const existingIframe = videoContainer.querySelector("iframe");
+          if (existingIframe) {
+            existingIframe.remove();
+          }
+
+          videoContainer.appendChild(iframe);
+
+          popup.classList.add("active");
+          document.body.style.overflow = "hidden";
+          document.body.classList.add("video-popup-open");
+        }
+
+        // Закрытие попапа
+        function closeVideoPopup() {
+          popup.classList.remove("active");
+          document.body.style.overflow = "";
+          document.body.classList.remove("video-popup-open");
+
+          // Очищаем видео через небольшую задержку для плавности анимации
+          setTimeout(() => {
+            const iframe = videoContainer.querySelector("iframe");
+            if (iframe) {
+              iframe.remove();
+            }
+            // Возвращаем прелоадер на место (скрытый)
+            loader.classList.add("hidden");
+          }, 300);
+        }
+
+        // Обработчики закрытия
+        closeBtn.addEventListener("click", closeVideoPopup);
+
+        popup.addEventListener("click", (e) => {
+          if (e.target === popup) {
+            closeVideoPopup();
+          }
+        });
+
+        // Закрытие по Escape
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && popup.classList.contains("active")) {
+            closeVideoPopup();
+          }
+        });
+      });
+    </script>
 
     <!-- Футер (как на страницах с фото) -->
     <section class="fourthScreen">
