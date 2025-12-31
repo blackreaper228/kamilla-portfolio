@@ -32,9 +32,148 @@
         position: relative;
         width: 100%;
         aspect-ratio: 3/4;
-        background: #000;
         overflow: hidden;
         border-radius: 0; /* Убираем скругление если нужно */
+        background-position: center center;
+        background-size: contain;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 4rem;
+          height: 4rem;
+          background-image: url("/images/platBTN.svg");
+          background-position: center center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          opacity: 0.5;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.1);
+          transition: transform 0.3s ease;
+        }
+
+        &.v1 {
+          background-image: url("/images/videos/01.png");
+        }
+
+        &.v2 {
+          background-image: url("/images/videos/02.png");
+        }
+
+        &.v3 {
+          background-image: url("/images/videos/03.png");
+        }
+        &.v4 {
+          background-image: url("/images/videos/04.png");
+        }
+        &.v5 {
+          background-image: url("/images/videos/05.png");
+        }
+        &.v6 {
+          background-image: url("/images/videos/06.png");
+        }
+        &.v7 {
+          background-image: url("/images/videos/07.png");
+        }
+        &.v8 {
+          background-image: url("/images/videos/08.png");
+        }
+        &.v9 {
+          background-image: url("/images/videos/09.png");
+        }
+        &.v10 {
+          background-image: url("/images/videos/10.png");
+        }
+        &.v11 {
+          background-image: url("/images/videos/11.png");
+        }
+        &.v12 {
+          background-image: url("/images/videos/12.png");
+        }
+        &.v13 {
+          background-image: url("/images/videos/13.png");
+        }
+        &.v14 {
+          background-image: url("/images/videos/14.png");
+        }
+        &.v15 {
+          background-image: url("/images/videos/15.png");
+        }
+        &.v16 {
+          background-image: url("/images/videos/16.png");
+        }
+        &.v17 {
+          background-image: url("/images/videos/17.png");
+        }
+        &.v18 {
+          background-image: url("/images/videos/18.png");
+        }
+        &.v19 {
+          background-image: url("/images/videos/19.png");
+        }
+        &.v20 {
+          background-image: url("/images/videos/20.png");
+        }
+        &.v21 {
+          background-image: url("/images/videos/21.png");
+        }
+        &.v22 {
+          background-image: url("/images/videos/22.png");
+        }
+        &.v23 {
+          background-image: url("/images/videos/23.png");
+        }
+        &.v24 {
+          background-image: url("/images/videos/24.png");
+        }
+        &.v25 {
+          background-image: url("/images/videos/25.png");
+        }
+        &.v26 {
+          background-image: url("/images/videos/26.png");
+        }
+        &.v27 {
+          background-image: url("/images/videos/27.png");
+        }
+        &.v28 {
+          background-image: url("/images/videos/28.png");
+        }
+        &.v29 {
+          background-image: url("/images/videos/29.png");
+        }
+        &.v30 {
+          background-image: url("/images/videos/30.png");
+        }
+        &.v31 {
+          background-image: url("/images/videos/31.png");
+        }
+        &.v32 {
+          background-image: url("/images/videos/32.png");
+        }
+        &.v33 {
+          background-image: url("/images/videos/33.png");
+        }
+        &.v34 {
+          background-image: url("/images/videos/34.png");
+        }
+        &.v35 {
+          background-image: url("/images/videos/35.png");
+        }
+        &.v36 {
+          background-image: url("/images/videos/36.png");
+        }
+        &.v37 {
+          background-image: url("/images/videos/37.png");
+        }
+        &.v38 {
+          background-image: url("/images/videos/38.png");
+        }
       }
 
       .video-item iframe {
@@ -194,32 +333,156 @@
       <!-- Сетка для видео (используем тот же класс photos-grid) -->
       <div class="photos-grid">
         <div
-          class="photo-item video-item"
+          class="photo-item video-item v1"
+          data-video-url="https://kinescope.io/embed/rcoT72uywj2zTkWYL5732j"
+        ></div>
+        <div
+          class="photo-item video-item v2"
+          data-video-url="https://kinescope.io/embed/6GZtZMcsgELdzmaa5VmShm"
+        ></div>
+        <div
+          class="photo-item video-item v3"
+          data-video-url="https://kinescope.io/embed/pJmdcg9sNbHbY9nXw982Ms"
+        ></div>
+        <div
+          class="photo-item video-item v4"
+          data-video-url="https://kinescope.io/embed/wiHvYQMzkp234uVHHFu6Us"
+        ></div>
+        <div
+          class="photo-item video-item v5"
+          data-video-url="https://kinescope.io/embed/qKHqW5F7FnKRYZ9idLExP"
+        ></div>
+        <div
+          class="photo-item video-item v6"
+          data-video-url="https://kinescope.io/embed/f4EoGpQdcEEvqcmQqGpe2h"
+        ></div>
+        <div
+          class="photo-item video-item v7"
+          data-video-url="https://kinescope.io/embed/xtmxfSw58fUXaQEJ2oEEkh"
+        ></div>
+        <div
+          class="photo-item video-item v8"
+          data-video-url="https://kinescope.io/embed/a2kmZcVzwtdKew5wURvDch"
+        ></div>
+        <div
+          class="photo-item video-item v9"
+          data-video-url="https://kinescope.io/embed/gnojjnm58mmxyNgVkYXYFw"
+        ></div>
+        <div
+          class="photo-item video-item v10"
+          data-video-url="https://kinescope.io/embed/g1DaoowE66zjdELVnaqKAU"
+        ></div>
+        <div
+          class="photo-item video-item v11"
+          data-video-url="https://kinescope.io/embed/0qmLh2BM9FY3RVkTZgaW9X"
+        ></div>
+        <div
+          class="photo-item video-item v12"
+          data-video-url="https://kinescope.io/embed/eUPYdw4RD5QgmwVUJZ1KkF"
+        ></div>
+        <div
+          class="photo-item video-item v13"
+          data-video-url="https://kinescope.io/embed/sNxdxTMu7qLmvRFV3RrW6d"
+        ></div>
+        <div
+          class="photo-item video-item v14"
+          data-video-url="https://kinescope.io/embed/uk6vgvFg6JgpSZeZ7kPGXD"
+        ></div>
+        <div
+          class="photo-item video-item v15"
+          data-video-url="https://kinescope.io/embed/bSYWfuVRhjhBP8JCr331z5"
+        ></div>
+        <div
+          class="photo-item video-item v16"
+          data-video-url="https://kinescope.io/embed/mNvxKbz2PhSwiBek2ZjKrk"
+        ></div>
+        <div
+          class="photo-item video-item v17"
+          data-video-url="https://kinescope.io/embed/nSQsanarPcwYAy8NH6E1CF"
+        ></div>
+        <div
+          class="photo-item video-item v18"
+          data-video-url="https://kinescope.io/embed/nDKMgkD6pT1b7PvxsvpBCn"
+        ></div>
+        <div
+          class="photo-item video-item v19"
+          data-video-url="https://kinescope.io/embed/ipQDdjP6o4JkqPhw6mVwbY"
+        ></div>
+        <div
+          class="photo-item video-item v20"
+          data-video-url="https://kinescope.io/embed/3eEm11rgJMsEtQqroZEZRV"
+        ></div>
+        <div
+          class="photo-item video-item v21"
+          data-video-url="https://kinescope.io/embed/ndTx6KXSDZpgJkF3WYxKKq"
+        ></div>
+        <div
+          class="photo-item video-item v22"
+          data-video-url="https://kinescope.io/embed/sYDcQmssG6BXwDYjfceb4X"
+        ></div>
+        <div
+          class="photo-item video-item v23"
+          data-video-url="https://kinescope.io/embed/ayfCeT69yTx3qhAdM3RbPE"
+        ></div>
+        <div
+          class="photo-item video-item v24"
+          data-video-url="https://kinescope.io/embed/eSvckkBCqGYJtQhPUjGK5r"
+        ></div>
+        <div
+          class="photo-item video-item v25"
+          data-video-url="https://kinescope.io/embed/u3sktQCRwk5tMs7DAy6X3M"
+        ></div>
+        <div
+          class="photo-item video-item v26"
+          data-video-url="https://kinescope.io/embed/eRPezBrDcpxGgRqMGqYB6D"
+        ></div>
+        <div
+          class="photo-item video-item v27"
+          data-video-url="https://kinescope.io/embed/45w76rZXBhEgqVDoUqE7Uw"
+        ></div>
+        <div
+          class="photo-item video-item v28"
+          data-video-url="https://kinescope.io/embed/rhPesphMXcJWLkRuf6eQn2"
+        ></div>
+        <div
+          class="photo-item video-item v29"
+          data-video-url="https://kinescope.io/embed/3sfs9FCqSTmvfLiicfecMq"
+        ></div>
+        <div
+          class="photo-item video-item v30"
+          data-video-url="https://kinescope.io/embed/koonmdjbPsgjzHjS1nP4iU"
+        ></div>
+        <div
+          class="photo-item video-item v31"
+          data-video-url="https://kinescope.io/embed/cQ6Wi8iVztD1nQJHMkhDV3"
+        ></div>
+        <div
+          class="photo-item video-item v32"
+          data-video-url="https://kinescope.io/embed/ic7SR29VGA75L4m8wBifgW"
+        ></div>
+        <div
+          class="photo-item video-item v33"
+          data-video-url="https://kinescope.io/embed/6Ch7osVXSGJVbwJqgL35se"
+        ></div>
+        <div
+          class="photo-item video-item v34"
           data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
         ></div>
         <div
-          class="photo-item video-item"
-          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+          class="photo-item video-item v35"
+          data-video-url="https://kinescope.io/embed/aSSktkvMeHD9m2czgDqTk8"
         ></div>
         <div
-          class="photo-item video-item"
-          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+          class="photo-item video-item v36"
+          data-video-url="https://kinescope.io/embed/ad5Q5gpTHzBADG7he9w2Xh"
         ></div>
         <div
-          class="photo-item video-item"
-          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+          class="photo-item video-item v37"
+          data-video-url="https://kinescope.io/embed/hUNjPExxZBZj3A69piw8Fs"
         ></div>
         <div
-          class="photo-item video-item"
-          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
-        ></div>
-        <div
-          class="photo-item video-item"
-          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
-        ></div>
-        <div
-          class="photo-item video-item"
-          data-video-url="https://kinescope.io/embed/gG7E5YgJPsbDyMcANVQRt2"
+          class="photo-item video-item v38"
+          data-video-url="https://kinescope.io/embed/4Ed5pNV65TgtdxBRnyCGPm"
         ></div>
       </div>
     </div>
